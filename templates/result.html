@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+		body {
+		font-family: Georgia, serif;
+		margin: 0;  
+		padding-top: 0;
+		padding-left: 25%;
+		padding-right: 25%;
+		background-image: url({{ url_for('static', filename='images/Bg.jpg') }})
+		}
+		button:hover {opacity: 0.8;}
+		div#loading {
+			width: 35px;
+			height: 35px;
+			display: none;
+			background: url(/static/loadingimage.gif) no-repeat;
+			cursor: wait;
+    	}
+		button {
+			background-color: #04AA6D;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width:50%;
+		}
+		input[type=text]{			
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		box-sizing: border-box;
+		}
+		.mainCard{
+		padding: 2%;
+		margin: 10%;
+		text-align: center;
+		}
+		.outputCard{
+		font-weight: bold;
+		padding: 2%;
+		margin: 10%;
+		text-align: center;
+		}
+		h1{
+		font-size: 2.4rem;
+		font-family: ui-sans-serif;
+		}
+		.lds-ellipsis {
+		display: inline-block;
+		position: relative;
+		width: 80px;
+		height: 80px;
+		}
+		.lds-ellipsis div {
+		position: absolute;
+		top: 33px;
+		width: 13px;
+		height: 13px;
+		border-radius: 50%;
+		background: #fff;
+		animation-timing-function: cubic-bezier(0, 1, 1, 0);
+		}
+		.lds-ellipsis div:nth-child(1) {
+		left: 8px;
+		animation: lds-ellipsis1 0.6s infinite;
+		}
+		.lds-ellipsis div:nth-child(2) {
+		left: 8px;
+		animation: lds-ellipsis2 0.6s infinite;
+		}
+		.lds-ellipsis div:nth-child(3) {
+		left: 32px;
+		animation: lds-ellipsis2 0.6s infinite;
+		}
+		.lds-ellipsis div:nth-child(4) {
+		left: 56px;
+		animation: lds-ellipsis3 0.6s infinite;
+		}
+		@keyframes lds-ellipsis1 {
+		0% {
+			transform: scale(0);
+		}
+		100% {
+			transform: scale(1);
+		}
+		}
+		@keyframes lds-ellipsis3 {
+		0% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(0);
+		}
+		}
+		@keyframes lds-ellipsis2 {
+		0% {
+			transform: translate(0, 0);
+		}
+		100% {
+			transform: translate(24px, 0);
+		}
+		}
+  </style>
+  <script type="text/javascript">// <![CDATA[
+	function loading(){
+		$("#loading").show();
+		$("#content").hide();       
+	}
+// ]]></script>
+  <title>ML API</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> 
+</head>
+	<body>
+        <div class="card mainCard">
+			<div class="heading">
+				<h1>Potato Disease Prediction App</h1><br><br>
+			</div>
+			<div class="inputFields">
+				<form action="{{ url_for('displayPrediction')}}" method="post" enctype="multipart/form-data">
+					<!--<label for="fileupload"> Select Potato leaf image to upload</label>
+					<input type="file" class="form-control" name="file" value="file" id="file" required><br>
+					<button type="submit" onclick="loading() class="btn btn-success btn-lg mb-1">Predict Disease</button><br>-->
+					<img src="file_path" alt="Potato Leaf Image" width="250" height="250"><br>
+				</form>
+			</div>          
+			<div id="content" class="card outputCard">
+			{{ predicted_text }}
+			</div>
+			<div id="loading" class="card outputCard">
+			</div>
+			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>         
+         </div>
+	</body>
+</html>
