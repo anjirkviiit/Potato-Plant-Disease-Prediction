@@ -21,7 +21,7 @@ Keras-Preprocessing==1.1.2
 kiwisolver==1.4.2
 libclang==14.0.1
 Markdown==3.3.7
-MarkupSafe==1.1.1
+MarkupSafe
 matplotlib==3.5.2
 matplotlib-inline==0.1.3
 numpy==1.22.4
@@ -58,7 +58,6 @@ tensorboard==2.9.1
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
 tensorflow-gpu==2.9.1
-tensorflow-gpu-estimator==2.9.0
 tensorflow-io-gcs-filesystem==0.26.0
 termcolor==1.1.0
 terminado==0.15.0
